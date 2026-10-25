@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>For Areeha</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Grandstander:wght@500;700;800&family=Figtree:wght@400;500;700&family=Gochi+Hand&display=swap">
+<style>
+/* Concept: a sticker-sheet thank-you. Soap bubbles and a sponge mascot nod to the chores; hard-shadow stickers keep it cute but crisp. */
+:root{
+  --bg:#f3efff; --surface:#ffffff; --surface2:#ebe5ff; --ink:#261d4f; --muted:#625a8f;
+  --line:#261d4f; --shadow:#261d4f; --paper:#fff4c2; --rule:#e6d98f;
+  --pink:#ff7fb0; --mint:#8ee6c9; --lav:#b8a2ff; --sun:#ffd95e; --peach:#ffb497;
+  --on-pastel:#261d4f;
+  --display:'Grandstander','Trebuchet MS',system-ui,sans-serif;
+  --body:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --hand:'Gochi Hand','Comic Sans MS',cursive;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#16112f; --surface:#251d4e; --surface2:#2f2662; --ink:#f5f0ff; --muted:#b4abe0;
+    --line:#a99cf2; --shadow:#0a071c; --paper:#2f2662; --rule:#40367a; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#16112f; --surface:#251d4e; --surface2:#2f2662; --ink:#f5f0ff; --muted:#b4abe0;
+  --line:#a99cf2; --shadow:#0a071c; --paper:#2f2662; --rule:#40367a; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--ink); font-family:var(--body); font-size:17px; line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px));
+  overflow-x:hidden;
+}
+.wrap{max-width:980px; margin:0 auto}
+h1,h2,h3{font-family:var(--display); line-height:1.08; text-wrap:balance; margin:0}
+p{margin:0}
+button{font:inherit; color:inherit; cursor:pointer}
+:focus-visible{outline:3px solid var(--pink); outline-offset:3px}
+
+.sticker{background:var(--surface); border:2.5px solid var(--line); border-radius:22px; box-shadow:5px 5px 0 var(--shadow)}
+.btn{
+  display:inline-flex; align-items:center; gap:.5rem; background:var(--pink); color:var(--on-pastel);
+  border:2.5px solid var(--line); border-radius:999px; padding:.7rem 1.25rem; font-family:var(--display); font-weight:700; font-size:1.05rem;
+  box-shadow:4px 4px 0 var(--shadow); transition:transform .12s, box-shadow .12s;
+}
+.btn:hover{transform:translate(-1px,-1px); box-shadow:5px 5px 0 var(--shadow)}
+.btn:active{transform:translate(3px,3px); box-shadow:1px 1px 0 var(--shadow)}
+.btn.alt{background:var(--sun)}
+.label{font-family:var(--display); font-weight:700; font-size:.82rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+
+/* hero */
+#hero{position:relative; padding-block:clamp(36px,8vw,84px) clamp(40px,7vw,72px); isolation:isolate}
+#bubbles{position:absolute; inset:0; width:100%; height:100%; z-index:-1; touch-action:manipulation}
+.hero-grid{display:grid; grid-template-columns:1.25fr .75fr; gap:28px; align-items:center}
+.chip{display:inline-block; background:var(--lav); color:var(--on-pastel); border:2.5px solid var(--line); border-radius:999px; padding:.25rem .85rem; font-family:var(--display); font-weight:700; font-size:.9rem; box-shadow:3px 3px 0 var(--shadow); transform:rotate(-2deg)}
+h1{font-size:clamp(2.5rem,8.6vw,5.2rem); font-weight:800; margin-top:18px; letter-spacing:-.01em}
+h1 .name{position:relative; display:inline-block; color:var(--ink)}
+h1 .name svg{position:absolute; left:-2%; bottom:-.16em; width:104%; height:.34em; overflow:visible}
+.lede{font-size:clamp(1.1rem,2.6vw,1.35rem); max-width:34ch; margin-top:22px; color:var(--ink)}
+.hero-actions{display:flex; flex-wrap:wrap; gap:14px; margin-top:28px}
+.meter{margin-top:30px; max-width:420px}
+.meter .bar{height:20px; border:2.5px solid var(--line); border-radius:999px; background:var(--surface); overflow:hidden; margin-top:8px}
+.meter .fill{height:100%; width:100%; background:repeating-linear-gradient(-45deg,var(--pink) 0 14px,var(--peach) 14px 28px); border-radius:999px; animation:fill 1.8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes fill{from{width:4%}to{width:100%}}
+.meter small{display:block; margin-top:6px; color:var(--muted); font-size:.9rem}
+.mascot{justify-self:center; width:min(100%,300px)}
+.mascot svg{width:100%; height:auto; overflow:visible; animation:bob 3.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px) rotate(1.5deg)}}
+.blink{transform-origin:center; transform-box:fill-box; animation:blink 5s infinite}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.hint{margin-top:18px; font-size:.92rem; color:var(--muted)}
+
+/* sections */
+section{padding-block:clamp(36px,6vw,64px)}
+.head{display:flex; flex-direction:column; gap:10px; margin-bottom:28px; max-width:620px}
+h2{font-size:clamp(1.9rem,5.2vw,3rem); font-weight:800}
+.head p{color:var(--muted)}
+
+/* skill cards */
+.skills{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px}
+.skill{
+  text-align:left; padding:0; min-height:196px; display:flex; flex-direction:column; background:var(--surface);
+  border:2.5px solid var(--line); border-radius:22px; box-shadow:5px 5px 0 var(--shadow); overflow:hidden; transition:transform .15s, box-shadow .15s;
+}
+.skill:hover{transform:translate(-2px,-2px); box-shadow:7px 7px 0 var(--shadow)}
+.skill .top{background:var(--c); color:var(--on-pastel); padding:14px 16px; display:flex; align-items:center; justify-content:space-between; border-bottom:2.5px solid var(--line)}
+.skill .top svg{width:46px; height:46px}
+.skill .lvl{font-family:var(--display); font-weight:800; font-size:.8rem; letter-spacing:.08em; background:var(--surface); color:var(--ink); padding:.15rem .6rem; border-radius:999px; border:2px solid var(--line)}
+.skill .body{padding:16px; display:flex; flex-direction:column; gap:6px; flex:1}
+.skill h3{font-size:1.3rem}
+.skill .front{color:var(--muted); font-size:.98rem}
+.skill .back{display:none; font-size:1.02rem}
+.skill[aria-pressed="true"] .front{display:none}
+.skill[aria-pressed="true"] .back{display:block; animation:pop .3s}
+.skill .tap{margin-top:auto; font-size:.8rem; color:var(--muted); font-weight:700; letter-spacing:.05em}
+@keyframes pop{from{transform:scale(.96); opacity:.4}}
+
+/* letter */
+.letter{
+  background:var(--paper); border:2.5px solid var(--line); border-radius:12px 26px 12px 26px; box-shadow:7px 7px 0 var(--shadow);
+  padding:clamp(24px,5vw,52px) clamp(20px,5vw,56px); position:relative; transform:rotate(-.6deg);
+  background-image:repeating-linear-gradient(to bottom,transparent 0 33px,var(--rule) 33px 35px); background-position:0 20px;
+}
+.letter .tape{position:absolute; top:-16px; left:50%; width:110px; height:32px; background:var(--mint); border:2.5px solid var(--line); transform:translateX(-50%) rotate(3deg); opacity:.95}
+.letter p{font-family:var(--hand); font-size:clamp(1.45rem,3.6vw,1.9rem); line-height:35px; max-width:44ch; margin-bottom:35px}
+.letter p.to{font-size:clamp(1.8rem,4.4vw,2.4rem); margin-bottom:35px}
+.letter p.sign{margin-bottom:0}
+.letter .heart{display:inline-block; width:1em; height:1em; vertical-align:-.12em}
+
+/* cheer */
+.cheer{display:grid; grid-template-columns:1fr auto; gap:22px; align-items:center; padding:clamp(22px,4vw,36px); background:var(--lav); color:var(--on-pastel)}
+.cheer .msg{font-family:var(--display); font-weight:800; font-size:clamp(1.5rem,4.4vw,2.3rem); line-height:1.15; min-height:3.5em; display:flex; align-items:center; text-wrap:balance}
+.cheer .msg.swap{animation:pop .35s}
+.cheer .label{color:var(--on-pastel); opacity:.75}
+
+/* coupons */
+.coupons{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px}
+.ticket{position:relative; display:grid; grid-template-columns:76px 1fr; background:var(--surface); border:2.5px solid var(--line); border-radius:18px; box-shadow:5px 5px 0 var(--shadow); overflow:hidden}
+.ticket .stub{background:var(--c); color:var(--on-pastel); display:grid; place-items:center; border-right:2.5px dashed var(--line); font-family:var(--display); font-weight:800; font-size:.78rem; letter-spacing:.1em; writing-mode:vertical-rl; transform:rotate(180deg); padding:10px 0}
+.ticket .txt{padding:16px 16px 16px; display:flex; flex-direction:column; gap:10px; align-items:flex-start}
+.ticket h3{font-size:1.2rem}
+.ticket .txt p{color:var(--muted); font-size:.95rem}
+.ticket .btn{padding:.4rem .95rem; font-size:.92rem; box-shadow:3px 3px 0 var(--shadow); background:var(--sun)}
+.ticket.done .btn{background:var(--surface2)}
+.ticket.done h3,.ticket.done .txt p{opacity:.55}
+.stamp{position:absolute; right:14px; top:50%; font-family:var(--display); font-weight:800; font-size:1.35rem; letter-spacing:.08em; color:var(--pink); border:3px solid var(--pink); border-radius:10px; padding:.1rem .7rem; transform:translateY(-50%) rotate(-12deg) scale(1); opacity:0; pointer-events:none; background:color-mix(in srgb,var(--surface) 70%,transparent)}
+.ticket.done .stamp{opacity:1; animation:slam .35s cubic-bezier(.3,1.6,.5,1)}
+@keyframes slam{from{transform:translateY(-50%) rotate(-12deg) scale(2.2); opacity:0}}
+
+footer{padding-block:48px 70px; text-align:center}
+footer .big{font-family:var(--display); font-weight:800; font-size:clamp(1.6rem,5vw,2.5rem); text-wrap:balance}
+footer p{color:var(--muted); margin-top:10px}
+#fx{position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:50}
+
+@media (max-width:720px){
+  .hero-grid{grid-template-columns:1fr}
+  .mascot{order:-1; width:200px; justify-self:start}
+  .cheer{grid-template-columns:1fr}
+  .stamp{font-size:1.1rem; right:8px}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important; transition:none !important}
+  html{scroll-behavior:auto}
+}
+</style>
+
+</head>
+<body>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<main class="wrap">
+  <header id="hero">
+    <canvas id="bubbles" aria-hidden="true"></canvas>
+    <div class="hero-grid">
+      <div>
+        <span class="chip">made only for you</span>
+        <h1>Thank you,
+          <span class="name">Areeha
+            <svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 12 C 25 2, 40 20, 62 10 S 100 2, 122 11 S 165 18, 197 6" fill="none" stroke="var(--pink)" stroke-width="7" stroke-linecap="round"/></svg>
+          </span>.
+        </h1>
+        <p class="lede">For every dish, every fold, every floor. Home feels like home because of you.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#letter">Read your letter</a>
+          <button class="btn alt" type="button" id="heroCheer">I need a boost</button>
+        </div>
+        <div class="meter" aria-label="Appreciation received: one hundred percent">
+          <span class="label">Appreciation received</span>
+          <div class="bar"><div class="fill"></div></div>
+          <small>100% and still going up.</small>
+        </div>
+        <p class="hint">Psst. Tap the bubbles.</p>
+      </div>
+      <div class="mascot" aria-hidden="true">
+        <svg viewBox="0 0 220 200">
+          <circle cx="30" cy="40" r="12" fill="none" style="stroke:var(--line)" stroke-width="3"/>
+          <circle cx="196" cy="70" r="8" fill="none" style="stroke:var(--line)" stroke-width="3"/>
+          <circle cx="188" cy="24" r="5" fill="var(--mint)" style="stroke:var(--line)" stroke-width="3"/>
+          <ellipse cx="110" cy="184" rx="62" ry="8" style="fill:var(--shadow)" opacity=".25"/>
+          <path d="M34 62 Q34 38 58 38 H162 Q186 38 186 62 V132 H34 Z" fill="var(--sun)" style="stroke:var(--line)" stroke-width="5" stroke-linejoin="round"/>
+          <path d="M34 132 H186 V150 Q186 168 168 168 H52 Q34 168 34 150 Z" fill="var(--mint)" style="stroke:var(--line)" stroke-width="5" stroke-linejoin="round"/>
+          <ellipse cx="62" cy="58" rx="5" ry="3.5" fill="#e6b93a" opacity=".7"/>
+          <ellipse cx="150" cy="52" rx="6" ry="4" fill="#e6b93a" opacity=".7"/>
+          <ellipse cx="164" cy="112" rx="5" ry="3.5" fill="#e6b93a" opacity=".7"/>
+          <ellipse cx="54" cy="114" rx="6" ry="4" fill="#e6b93a" opacity=".7"/>
+          <g class="blink"><circle cx="84" cy="86" r="8" fill="#261d4f"/><circle cx="136" cy="86" r="8" fill="#261d4f"/>
+          <circle cx="87" cy="83" r="2.6" fill="#fff"/><circle cx="139" cy="83" r="2.6" fill="#fff"/></g>
+          <ellipse cx="68" cy="106" rx="10" ry="6" fill="var(--pink)" opacity=".85"/><ellipse cx="152" cy="106" rx="10" ry="6" fill="var(--pink)" opacity=".85"/>
+          <path d="M98 100 Q110 116 122 100" fill="none" stroke="#261d4f" stroke-width="4.5" stroke-linecap="round"/>
+          <path d="M34 98 Q16 92 14 76" fill="none" style="stroke:var(--line)" stroke-width="5" stroke-linecap="round"/>
+          <path d="M186 98 Q204 92 206 76" fill="none" style="stroke:var(--line)" stroke-width="5" stroke-linecap="round"/>
+          <path d="M92 178 V190 M128 178 V190" style="stroke:var(--line)" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <section id="skills">
+    <div class="head">
+      <span class="label">Skills unlocked</span>
+      <h2>The things you do that never get a trophy.</h2>
+      <p>So here are the trophies. Tap each one.</p>
+    </div>
+    <div class="skills" id="skillGrid"></div>
+  </section>
+
+  <section id="letter">
+    <div class="head">
+      <span class="label">Open when you feel sad</span>
+      <h2>A letter for you.</h2>
+    </div>
+    <article class="letter">
+      <div class="tape" aria-hidden="true"></div>
+      <p class="to">Dear Areeha,</p>
+      <p>I know you've been feeling low, and I want you to know that I see you. Not only the sad part. All of you.</p>
+      <p>I see the dishes done before anyone asks. The laundry folded. The floors swept again because you want the house to feel nice for everybody. So much of that work happens quietly, and nobody claps. I'm clapping now, as loud as I possibly can.</p>
+      <p>Being tired doesn't mean you're failing. Being sad doesn't mean you're ungrateful or weak. It means you've been carrying a lot, and you are allowed to put some of it down. Rest is not something you have to earn.</p>
+      <p>You are not just the person who helps at home. You are kind, you are funny, and you make every room better by walking into it. Your work matters, and so do you.</p>
+      <p>Whenever it gets heavy, come find me. We'll sit, we'll talk, or we won't talk at all.</p>
+      <p>I'm so proud to be your best friend.</p>
+      <p class="sign">With all my love,<br>Ali
+        <svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21 C-4 10 5 1 12 8 C19 1 28 10 12 21Z" fill="var(--pink)" style="stroke:var(--line)" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      </p>
+    </article>
+  </section>
+
+  <section id="boost">
+    <div class="head">
+      <span class="label">Pocket pep talk</span>
+      <h2>Need a boost? Press the button.</h2>
+    </div>
+    <div class="cheer sticker">
+      <div>
+        <span class="label">Today's reminder</span>
+        <p class="msg" id="msg" aria-live="polite">You don't have to be productive to be valuable.</p>
+      </div>
+      <button class="btn" type="button" id="more">Another one</button>
+    </div>
+  </section>
+
+  <section id="coupons">
+    <div class="head">
+      <span class="label">Redeemable any time</span>
+      <h2>Thank-you coupons.</h2>
+      <p>Tap to redeem. No expiry date, no small print.</p>
+    </div>
+    <div class="coupons" id="couponGrid"></div>
+  </section>
+
+  <footer>
+    <p class="big">You are appreciated today, and every day after.</p>
+    <p>Made with love for Areeha, by Ali, the friend who's always in your corner.</p>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var css = function(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); };
+
+  /* ---------- skill cards ---------- */
+  var ico = {
+    plate:'<circle cx="24" cy="24" r="16" fill="#fff" stroke="#261d4f" stroke-width="3"/><circle cx="24" cy="24" r="9" fill="none" stroke="#261d4f" stroke-width="2.5"/><circle cx="38" cy="9" r="4" fill="none" stroke="#261d4f" stroke-width="2.5"/>',
+    shirt:'<path d="M16 8 L6 15 L11 22 L16 19 V40 H32 V19 L37 22 L42 15 L32 8 Q24 15 16 8Z" fill="#fff" stroke="#261d4f" stroke-width="3" stroke-linejoin="round"/>',
+    broom:'<path d="M31 5 L22 27" stroke="#261d4f" stroke-width="4" stroke-linecap="round"/><path d="M16 26 H30 L34 42 H10 Z" fill="#fff" stroke="#261d4f" stroke-width="3" stroke-linejoin="round"/><path d="M17 33 L16 41 M23 33 V41 M29 33 L30 41" stroke="#261d4f" stroke-width="2"/>',
+    pot:'<path d="M8 22 H40 V34 Q40 42 32 42 H16 Q8 42 8 34Z" fill="#fff" stroke="#261d4f" stroke-width="3" stroke-linejoin="round"/><path d="M4 22 H44" stroke="#261d4f" stroke-width="4" stroke-linecap="round"/><path d="M17 16 Q13 12 17 8 M25 16 Q21 12 25 8 M33 16 Q29 12 33 8" fill="none" stroke="#261d4f" stroke-width="2.5" stroke-linecap="round"/>',
+    sparkle:'<path d="M24 4 L28 19 L43 24 L28 29 L24 44 L20 29 L5 24 L20 19Z" fill="#fff" stroke="#261d4f" stroke-width="3" stroke-linejoin="round"/>',
+    bed:'<path d="M5 36 V14 M5 28 H43 V36 M43 28 V22 Q43 18 38 18 H20 V28" fill="none" stroke="#261d4f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="22" r="4.5" fill="#fff" stroke="#261d4f" stroke-width="3"/>'
+  };
+  var skills = [
+    {t:'Dish Dragon Slayer', f:'Defeats mountains of plates daily.', b:'Mountains of plates, and you still show up. Every clean cup is a little act of love.', c:'var(--mint)', i:'plate'},
+    {t:'Laundry Wizard', f:'Turns piles into neat stacks.', b:'Somehow every sock finds its twin, and it is all because of you.', c:'var(--lav)', i:'shirt'},
+    {t:'Floor Shine Captain', f:'Leads the sweep, mop and shine squad.', b:'The room feels calm because your hands made it calm.', c:'var(--sun)', i:'broom'},
+    {t:'Kitchen Magician', f:'Makes food appear. Warm food.', b:'Food that is warm in a way that has nothing to do with the stove.', c:'var(--peach)', i:'pot'},
+    {t:'Dust Whisperer', f:'Spots the corners nobody else sees.', b:'You notice the little things. I notice you noticing, and I am grateful.', c:'var(--pink)', i:'sparkle'},
+    {t:'Fresh-Bed Fairy', f:'Brings the soft, clean-sheet feeling.', b:'Fresh sheets feel like a hug. Thank you for handing out hugs without saying a word.', c:'var(--mint)', i:'bed'}
+  ];
+  var grid = document.getElementById('skillGrid');
+  skills.forEach(function(s){
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'skill'; b.setAttribute('aria-pressed','false'); b.style.setProperty('--c', s.c);
+    b.innerHTML = '<div class="top"><svg viewBox="0 0 48 48" aria-hidden="true">'+ico[s.i]+'</svg><span class="lvl">LEVEL MAX</span></div>'+
+      '<div class="body"><h3>'+s.t+'</h3><p class="front">'+s.f+'</p><p class="back">'+s.b+'</p><span class="tap">TAP TO FLIP</span></div>';
+    b.addEventListener('click', function(){
+      var on = b.getAttribute('aria-pressed') === 'true';
+      b.setAttribute('aria-pressed', on ? 'false' : 'true');
+      b.querySelector('.tap').textContent = on ? 'TAP TO FLIP' : 'TAP AGAIN';
+      if(!on){ var r = b.getBoundingClientRect(); burstHearts(r.left + r.width/2, r.top + 30, 8); }
+    });
+    grid.appendChild(b);
+  });
+
+  /* ---------- cheer messages ---------- */
+  var cheers = [
+    "You don't have to be productive to be valuable.",
+    "Today you did enough. Truly.",
+    "The house is cleaner because you care. That's a superpower.",
+    "It's okay to be sad. It won't last forever.",
+    "Someone is very proud of you right now. (Me.)",
+    "Your kindness shows up in the smallest chores.",
+    "Rest counts as work too.",
+    "You are loved on your busy days and your lazy days.",
+    "Thank you for making home feel like home.",
+    "You're allowed to take a break and drink something warm.",
+    "Not everything you do gets applauded, but everything you do matters.",
+    "You're my favourite person. That's not changing."
+  ];
+  var ci = 0, msg = document.getElementById('msg');
+  function nextCheer(btn){
+    ci = (ci + 1) % cheers.length;
+    msg.textContent = cheers[ci];
+    msg.classList.remove('swap'); void msg.offsetWidth; msg.classList.add('swap');
+    if(btn){ var r = btn.getBoundingClientRect(); burstHearts(r.left + r.width/2, r.top, 16); }
+  }
+  document.getElementById('more').addEventListener('click', function(e){ nextCheer(e.currentTarget); });
+  document.getElementById('heroCheer').addEventListener('click', function(e){
+    nextCheer(null);
+    var r = e.currentTarget.getBoundingClientRect(); burstHearts(r.left + r.width/2, r.top, 16);
+    document.getElementById('boost').scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block:'center'});
+  });
+
+  /* ---------- coupons ---------- */
+  var coupons = [
+    {id:'swap', t:'One free chore swap', p:'Pick any chore. I do it, you chill.', c:'var(--mint)'},
+    {id:'vent', t:'One long vent session', p:'No advice. Only listening, snacks and hugs.', c:'var(--lav)'},
+    {id:'movie', t:'One movie night, my treat', p:'You choose the movie. I bring everything else.', c:'var(--sun)'},
+    {id:'snack', t:'One snack run', p:'Your favourite thing, delivered to your door.', c:'var(--peach)'},
+    {id:'hug', t:'One giant hug', p:'Valid anywhere, any time, no limit on refills.', c:'var(--pink)'},
+    {id:'nap', t:'One guilt-free rest day', p:'Zero chores. Zero guilt. Tea included.', c:'var(--mint)'}
+  ];
+  var store = {};
+  try { store = JSON.parse(localStorage.getItem('areeha-coupons') || '{}') || {}; } catch(e){ store = {}; }
+  function save(){ try { localStorage.setItem('areeha-coupons', JSON.stringify(store)); } catch(e){} }
+  var cg = document.getElementById('couponGrid');
+  coupons.forEach(function(c){
+    var el = document.createElement('div');
+    el.className = 'ticket' + (store[c.id] ? ' done' : '');
+    el.style.setProperty('--c', c.c);
+    el.innerHTML = '<div class="stub">THANK YOU</div><div class="txt"><h3>'+c.t+'</h3><p>'+c.p+'</p><button class="btn" type="button"></button></div><span class="stamp" aria-hidden="true">REDEEMED</span>';
+    var btn = el.querySelector('button');
+    function label(){ btn.textContent = el.classList.contains('done') ? 'Redeemed (tap to undo)' : 'Redeem'; }
+    label();
+    btn.addEventListener('click', function(){
+      var on = el.classList.toggle('done');
+      store[c.id] = on; save(); label();
+      if(on){ var r = btn.getBoundingClientRect(); burstHearts(r.left + r.width/2, r.top, 14); }
+    });
+    cg.appendChild(el);
+  });
+
+  /* ---------- fx canvas (hearts, sparkles, floating words) ---------- */
+  var fx = document.getElementById('fx'), fctx = fx.getContext('2d'), parts = [], dpr = Math.min(window.devicePixelRatio || 1, 2);
+  function sizeFx(){ fx.width = innerWidth * dpr; fx.height = innerHeight * dpr; fctx.setTransform(dpr,0,0,dpr,0,0); }
+  sizeFx(); addEventListener('resize', sizeFx);
+  var hues = ['#ff7fb0','#b8a2ff','#8ee6c9','#ffd95e','#ffb497'];
+  function burstHearts(x, y, n){
+    for(var i=0;i<n;i++){
+      parts.push({k:'heart', x:x, y:y, vx:(Math.random()-.5)*5, vy:-2-Math.random()*4, g:.09, s:8+Math.random()*10, life:0, max:70+Math.random()*30, c:hues[i%hues.length], rot:(Math.random()-.5)*.6});
+    }
+    run();
+  }
+  function popWord(x, y, word){
+    parts.push({k:'word', x:x, y:y, vx:0, vy:-1.1, g:0, s:20, life:0, max:70, w:word});
+    for(var i=0;i<12;i++){
+      var a = Math.random()*Math.PI*2, sp = 1.5+Math.random()*3;
+      parts.push({k:'dot', x:x, y:y, vx:Math.cos(a)*sp, vy:Math.sin(a)*sp, g:.05, s:2+Math.random()*3, life:0, max:28+Math.random()*14, c:hues[i%hues.length]});
+    }
+    run();
+  }
+  function heartPath(c, s){
+    c.beginPath(); c.moveTo(0, s*.35);
+    c.bezierCurveTo(-s*1.1, -s*.5, -s*.5, -s*1.2, 0, -s*.45);
+    c.bezierCurveTo(s*.5, -s*1.2, s*1.1, -s*.5, 0, s*.35); c.closePath();
+  }
+  var running = false;
+  function run(){ if(!running){ running = true; requestAnimationFrame(tick); } }
+  function tick(){
+    fctx.clearRect(0,0,innerWidth,innerHeight);
+    var ink = css('--ink') || '#261d4f';
+    parts = parts.filter(function(p){ return p.life < p.max; });
+    parts.forEach(function(p){
+      p.life++; p.x += p.vx; p.y += p.vy; p.vy += p.g;
+      var a = 1 - p.life/p.max;
+      fctx.save(); fctx.globalAlpha = Math.max(0, Math.min(1, a*1.4));
+      if(p.k === 'heart'){
+        fctx.translate(p.x, p.y); fctx.rotate(p.rot*p.life/10); heartPath(fctx, p.s);
+        fctx.fillStyle = p.c; fctx.fill(); fctx.lineWidth = 2; fctx.strokeStyle = ink; fctx.stroke();
+      } else if(p.k === 'dot'){
+        fctx.beginPath(); fctx.arc(p.x, p.y, p.s, 0, 7); fctx.fillStyle = p.c; fctx.fill();
+      } else {
+        fctx.font = '800 ' + p.s + 'px Grandstander, sans-serif'; fctx.textAlign = 'center';
+        fctx.lineJoin = 'round'; fctx.lineWidth = 5; fctx.strokeStyle = ink; fctx.strokeText(p.w, p.x, p.y);
+        fctx.fillStyle = '#ff7fb0'; fctx.fillText(p.w, p.x, p.y);
+      }
+      fctx.restore();
+    });
+    if(parts.length){ requestAnimationFrame(tick); } else { running = false; fctx.clearRect(0,0,innerWidth,innerHeight); }
+  }
+
+  /* ---------- soap bubbles ---------- */
+  var hero = document.getElementById('hero'), bc = document.getElementById('bubbles'), bx = bc.getContext('2d'), bubbles = [], bw = 0, bh = 0;
+  var words = ['thank you','you matter','so proud','rest up','you’re loved','hugs','you’re kind','best friend'];
+  function rnd(a,b){ return a + Math.random()*(b-a); }
+  function mk(initial){
+    return {x:rnd(0,bw), y: initial ? rnd(0,bh) : bh + rnd(20,120), r:rnd(14,46), vy:rnd(.18,.55), ph:rnd(0,6.28), sw:rnd(.2,.6), h:hues[Math.floor(rnd(0,hues.length))]};
+  }
+  function sizeB(){
+    var r = hero.getBoundingClientRect(); bw = r.width; bh = r.height;
+    bc.width = bw*dpr; bc.height = bh*dpr; bx.setTransform(dpr,0,0,dpr,0,0);
+    var n = Math.max(10, Math.min(22, Math.round(bw/48)));
+    while(bubbles.length < n) bubbles.push(mk(true));
+    bubbles.length = n;
+  }
+  sizeB(); addEventListener('resize', sizeB);
+  function drawB(t){
+    bx.clearRect(0,0,bw,bh);
+    bubbles.forEach(function(b){
+      if(!reduced){ b.y -= b.vy; b.x += Math.sin(t/1400 + b.ph) * b.sw * .5; if(b.y < -b.r*2) Object.assign(b, mk(false)); }
+      var g = bx.createRadialGradient(b.x - b.r*.35, b.y - b.r*.35, b.r*.1, b.x, b.y, b.r);
+      g.addColorStop(0, 'rgba(255,255,255,.55)'); g.addColorStop(.7, b.h + '33'); g.addColorStop(1, b.h + '88');
+      bx.beginPath(); bx.arc(b.x, b.y, b.r, 0, 7); bx.fillStyle = g; bx.fill();
+      bx.lineWidth = 2; bx.strokeStyle = b.h; bx.globalAlpha = .9; bx.stroke(); bx.globalAlpha = 1;
+      bx.beginPath(); bx.arc(b.x - b.r*.4, b.y - b.r*.4, b.r*.16, 0, 7); bx.fillStyle = 'rgba(255,255,255,.9)'; bx.fill();
+    });
+    requestAnimationFrame(drawB);
+  }
+  requestAnimationFrame(drawB);
+  hero.addEventListener('pointerdown', function(e){
+    if(e.target.closest('button,a')) return;
+    var r = hero.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+    for(var i = bubbles.length - 1; i >= 0; i--){
+      var b = bubbles[i];
+      if(Math.hypot(x - b.x, y - b.y) < b.r + 8){
+        popWord(e.clientX, e.clientY, words[Math.floor(Math.random()*words.length)]);
+        bubbles[i] = mk(false); break;
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>
